@@ -35,7 +35,7 @@ function Theory() {
   useEffect(() => {
     const fetchTopics = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/theory/topics");
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/theory/topics`);
         setTopics(response.data);
         setLoading(false);
       } catch (err) {
@@ -66,7 +66,7 @@ function Theory() {
     const fetchQuestions = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/theory/topic/${selectedTopic}/difficulty/${selectedDifficulty}`
+          `${import.meta.env.VITE_API_URL}/api/theory/topic/${selectedTopic}/difficulty/${selectedDifficulty}`
         );
         setQuestions(response.data);
       } catch (err) {
@@ -142,7 +142,7 @@ function Theory() {
     // Fetch rich AI explanation
     setIsExplaining(true);
     try {
-      const res = await axios.post("http://localhost:5000/api/ai/theory-explain", {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/ai/theory-explain`, {
         question: question.question,
         options: question.options,
         correctOptionIndex: question.correctOptionIndex,

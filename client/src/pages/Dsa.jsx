@@ -69,7 +69,7 @@ export default function DSA() {
       try {
         setIsLoading(true);
         const res = await axios.get(
-          `http://localhost:5000/api/questions?company=${company}&difficulty=${difficulty}`
+          `${import.meta.env.VITE_API_URL}/api/questions?company=${company}&difficulty=${difficulty}`
         );
 
         setQuestions(res.data || []);
@@ -144,7 +144,7 @@ export default function DSA() {
     setIsExplaining(true);
     setExplanation("");
     try {
-      const res = await axios.post("http://localhost:5000/api/ai/dsa-explain", {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/ai/dsa-explain`, {
         title: q.title,
         statement: q.statement,
         example: q.example,
@@ -170,7 +170,7 @@ export default function DSA() {
     setIsPaused(true);
     setFeedback("");
     try {
-      const res = await axios.post("http://localhost:5000/api/ai/dsa-evaluate", {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/ai/dsa-evaluate`, {
         title: q.title,
         statement: q.statement,
         topic: q.topic,

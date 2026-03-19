@@ -121,7 +121,7 @@ const Dashboard = () => {
     setSuggestionsVisible(true);
     setAiSuggestions('');
     try {
-      const res = await axios.post('http://localhost:5000/api/ai/suggestions', {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/ai/suggestions`, {
         dsa: stats.dsa,
         theory: stats.theory,
         systemDesign: stats.systemDesign,

@@ -38,7 +38,7 @@ export default function AiChat() {
     setLoading(true);
 
     try {
-      const res = await axios.post("http://localhost:5000/api/ai/chat", {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/ai/chat`, {
         messages: updated,
       });
       setMessages([...updated, { role: "assistant", content: res.data.reply }]);

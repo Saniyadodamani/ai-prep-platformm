@@ -34,7 +34,7 @@ function SystemDesign() {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/system-design");
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/system-design`);
         setQuestions(response.data);
         setLoading(false);
       } catch (err) {
@@ -98,7 +98,7 @@ function SystemDesign() {
     setIsExplaining(true);
     setExplanation("");
     try {
-      const res = await axios.post("http://localhost:5000/api/ai/system-design-explain", {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/ai/system-design-explain`, {
         title: problem.title,
         description: problem.description,
         difficulty: problem.difficulty,
@@ -124,7 +124,7 @@ function SystemDesign() {
     setSubmitted(true);
     try {
       const problem = questions[selectedIndex];
-      const res = await axios.post("http://localhost:5000/api/ai/system-design-evaluate", {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/ai/system-design-evaluate`, {
         title: problem.title,
         description: problem.description,
         answer,
