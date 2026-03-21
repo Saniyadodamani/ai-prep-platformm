@@ -26,8 +26,8 @@ connectDB();
    MIDDLEWARE
 ========================= */
 app.use(cors({
-  origin: "http://localhost:5173",
-  credentials: true
+   origin: "https://ai-prep-platformm.vercel.app",
+   credentials: true
 }));
 
 app.use(express.json());
@@ -46,12 +46,12 @@ app.use("/api/ai", aiRoutes);
    TEST ROUTE
 ========================= */
 app.get("/", (req, res) => {
-  res.send("Backend Working ");
+   res.send("Backend Working ");
 });
 
 /* =========================
    START SERVER
 ========================= */
 app.listen(5000, () => {
-  console.log("Server running on port 5000 ");
+   console.log("Server running on port 5000 ");
 });
