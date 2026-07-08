@@ -25,14 +25,8 @@ connectDB();
 /* =========================
    MIDDLEWARE
 ========================= */
-const allowedOrigins = [
-   "https://ai-prep-platformm.vercel.app",
-   "http://localhost:5173",
-   process.env.FRONTEND_URL
-].filter(Boolean);
-
 app.use(cors({
-   origin: allowedOrigins,
+   origin: process.env.FRONTEND_URL,
    credentials: true
 }));
 
